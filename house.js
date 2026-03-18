@@ -24,7 +24,9 @@ async function getHouse() {
 
 function renderHouse(house) {
   const container = document.getElementById("house-detail");
-
+  amplitude.track("House Loaded", {
+  houseName: house.name
+});
   container.innerHTML = `
     <h2>${house.name}</h2>
     <p><b>Founder:</b> ${house.founder}</p>
