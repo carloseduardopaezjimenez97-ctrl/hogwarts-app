@@ -24,13 +24,29 @@ async function getHouse() {
 
 function renderHouse(house) {
   const container = document.getElementById("house-detail");
-  console.log("Sending event with:", house.name); // debug
-  window.amplitude.track({
-  event_type: "House Loaded",
-  event_properties: {
-    houseName: String(house.name)
+  let eventName = "";
+
+  switch (house.name) {
+    case "Gryffindor":
+      eventName = "View Gryffindor";
+      break;
+    case "Slytherin":
+      eventName = "View Slytherin";
+      break;
+    case "Ravenclaw":
+      eventName = "View Ravenclaw";
+      break;
+    case "Hufflepuff":
+      eventName = "View Hufflepuff";
+      break;
+    default:
+      eventName = "View Unknown House";
   }
-});
+
+  window.amplitude.track(eventName);
+
+  console.log("Event sent:", eventName)
+
   container.innerHTML = `
     <h2>${house.name}</h2>
     <p><b>Founder:</b> ${house.founder}</p>
