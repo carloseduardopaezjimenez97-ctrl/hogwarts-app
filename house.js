@@ -25,7 +25,7 @@ async function getHouse() {
 function renderHouse(house) {
   const container = document.getElementById("house-detail");
   amplitude.track("House Loaded", {
-  houseName: house.name
+  houseName: String(house.name)
 });
   container.innerHTML = `
     <h2>${house.name}</h2>
