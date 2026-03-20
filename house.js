@@ -25,9 +25,12 @@ async function getHouse() {
 function renderHouse(house) {
   const container = document.getElementById("house-detail");
   console.log("Sending event with:", house.name); // debug
-  window.amplitude.track("House Loaded", {
+  window.amplitude.track({
+  event_type: "House Loaded",
+  event_properties: {
     houseName: String(house.name)
-  });
+  }
+});
   container.innerHTML = `
     <h2>${house.name}</h2>
     <p><b>Founder:</b> ${house.founder}</p>
