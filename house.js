@@ -24,8 +24,7 @@ async function getHouse() {
 
 function renderHouse(house) {
   const container = document.getElementById("house-detail");
-  console.log("Sending event with:", house.name); // debug
-  window.amplitude.track("House Loaded", {
+   amplitude.track("House Loaded", {
     houseName: String(house.name)
   });
 });
